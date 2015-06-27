@@ -1,0 +1,199 @@
+%% unespfcav.tex, v<VERSION> waltermaldonado
+%% Copyright 2015 by Walter Maldonado Jr 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Walter Maldonado Jr
+%%
+%% Creator and original mantainer: Walter Maldonado Jr <walter@agroestat.com.br>
+
+\documentclass[a4paper]{ltxdoc}
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% seleção de códigos de fonte.
+\usepackage[utf8]{inputenc}		% determina a codificação utiizada (conversão automática dos acentos)
+\usepackage{hyperref}  			% controla a formação do índice
+\usepackage{parskip}			% espaçamento entre os parágrafos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{morefloats}			% permite mais floats
+
+
+% Babel e ajustes
+\usepackage[brazil]{babel}		% idiomas
+\addto\captionsbrazil{
+    %% ajusta nomes padroes do babel
+    \renewcommand{\bibname}{Refer\^encias}
+    \renewcommand{\indexname}{\'Indice}
+    \renewcommand{\listfigurename}{Lista de ilustra\c{c}\~{o}es}
+    \renewcommand{\listtablename}{Lista de tabelas}
+    %% ajusta nomes usados com a macro \autoref
+    \renewcommand{\pageautorefname}{p\'agina}
+    \renewcommand{\sectionautorefname}{se{\c c}\~ao}
+    \renewcommand{\subsectionautorefname}{subse{\c c}\~ao}
+    \renewcommand{\paragraphautorefname}{par\'agrafo}
+    \renewcommand{\subsubsectionautorefname}{subse{\c c}\~ao}
+    \renewcommand{\paragraphautorefname}{subse{\c c}\~ao}
+}  
+
+\title{\textbf{A classe \textsf{fcavTeX}} \\ \Large{Teses e dissertações \\ Faculdade de Ciências Agrárias e Veterinárias de Jaboticabal}}
+
+%   \thanks{Este documento
+%   se referete ao \textsf{abntex2} versão \fileversion,
+%   de \filedate.}
+  
+\author{Walter Maldonado Jr\\walter@agroestat.com.br} 
+
+\date{\today, v<VERSION>}
+
+\hypersetup{
+		pdftitle={A classe fcavTeX},
+		pdfauthor={Walter Maldonado Jr},
+    	pdfsubject={Teses e dissertações da Faculdade de Ciências Agrárias e Veterinárias de Jaboticabal}, 
+    	pdfkeywords={FCAV}{UNESP}{trabalho acadêmico}{dissertação}{tese}, 
+		pdfproducer={Walter Maldonado Jr -- walter@agroestat.com.br}, 	% producer of the document
+	    pdfcreator={LaTeX with fcavTeX},
+    	colorlinks=true,
+    	linkcolor=blue,
+    	citecolor=blue,
+		urlcolor=blue
+}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\changes{v1.0}{2015/06/27}{Versão inicial}
+
+\usepackage{xcolor}
+\usepackage{listings}
+
+\lstset
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{black},
+    extendedchars=true,
+    literate={á}{{\'a}}1 {ã}{{\~a}}1 {é}{{\'e}}1 {ó}{{\'o}}1 {ç}{{\c{c}}}1 {í}{{\'i}}1 {Ç}{{\c{C}}}1 {Ã}{{\~A}}1 {Â}{{\^A}}1 {ô}{{\^o}}1 {õ}{{\~o}}1,
+}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+A formatação de um trabalho
+acadêmico é sempre uma tarefa árdua, mecânica e cansativa. Quando
+nos deparamos com um trabalho extenso e com diversas referências bibliográficas,
+semanas de trabalho se vão. A classe fcavTeX poupa o usuário de horas perdidas
+em frente a um editor de texto limitado que não irá garantir a padronização do 
+seu documento. Com um conhecimento básico de \LaTeX \ é possível escrever todo a
+sua tese ou dissertação sem precisar se preocupar com tamanho de fonte, espaçamento, etc.
+Quantos espaços após o título eu devo dar? Será que esse título é em negrito? São perguntas
+que não merecem o tempo de um pesquisador.
+\end{abstract}
+
+\tableofcontents
+
+\listoftables
+ 
+% ------
+\section{Introdução}
+% ------
+
+Eu adoro tecnologia. A cada dia que eu trabalho com ela fico mais fascinado com todas as possiblilidades
+e todos os recursos que ela nos oferece. É fascinante. Se compararmos algumas tarefas que executamos hoje com a maneira
+com que eram desenvolvidas dez anos atrás veremos que há um progresso imenso. Tomem como exemplo os \emph{smartphones} 
+e como ficou fácil gerenciar a nossa agenda de compromissos, que além de tudo nos alerta quando esquecemos de algo,
+ao nosso alcance 24h por dia.
+
+E nós ainda estamos escrevendo nossos trabalho acadêmicos como escrevíamos há 25 anos. Escrevemos um título, selecionamos
+e mudamos os atributos de fonte. Quando muito, temos estílos pré-definidos para essa tarefa, o que ajuda um pouco mas
+não é suficiente. Digo que não é suficiente pois, se estamos fazendo um trabalho acadêmico, com certeza estamos seguindo 
+diversas regras que nos são impostas. Regras essas que \emph{todos} os alunos deverão seguir.
+
+Pois bem, quando estava decidindo como escreveria minha tese de doutorado, tais pensamentos me vieram à mente. Depois
+de um tempo de reflexão cheguei à seguinte conclusão, ``Irei escrever minha tese utilizando o \LaTeX!!''. Dessa maneira,
+seria possível que, além de garantir um nível de qualidade superior ao meu trabalho, poderia transformar os padrões que
+desenvolveria em uma classe para que todos os alunos a pudessem utilizar e economizar muito tempo.
+
+E aqui está a fcavTeX. Espero que seja útil e me coloco a disposição para questionamentos e para que possamos melhorá-la.
+Tenho certeza de que, com um conhecimento básico de \LaTeX, muito tempo poderá ser economizado e a qualidade estética
+dos trabalhos de nossa universidade será melhorada consideravelmente.
+
+\section{Exemplo de utlilização} % (fold)
+\label{sec:exemplo_de_utliliza_o}
+O uso da classe é extremamente intuitivo. Os comandos são auto-decritivos e basta trocar o conteúdo entre as chaves dentro
+do seu arquivo .tex. Atualmente, somente a estrutura de tese em capítulos é suportada, mas o modelo convencional também será
+incluído. Todos os recursos apresentados pela classe estão em conformidade com as normas da universidade, que podem ser conferidas 
+\href{http://www.fcav.unesp.br/Home/posgraduacao/normas_disss_tese.pdf}{aqui}. Segue o código do exemplo.
+
+\begin{lstlisting}
+    \documentclass{unespfcav}
+
+    \begin{document}
+
+    \titulo{ESTIMATIVA DA PRODUÇÃO DE CITROS USANDO IMAGENS DIGITAIS}
+    \tituloingles{Citrus yield estimation using digital images}
+    \autor{Walter Maldonado Jr}
+    \orientador{Prof. Dr. José Carlos Barbosa}
+    \qualificacaoautor{Engenheiro agrônomo}
+    \instituicao{UNIVERSIDADE ESTADUAL PAULISTA - UNESP\par CÂMPUS DE JABOTICABAL}
+    \tipodoc{Tese}
+    \titulopretendido{Doutor}
+    \programa{Agronomia (Produção Vegetal)}
+    \ano{2015}
+
+    \capa
+    \folhaderosto
+    \fichacatalografica
+    \certificadodeaprovacao
+    \dadoscurriculares{Dados curriculares aqui!}
+    \epigrafe{Epígrafe}
+    \dedicatoria{Dedicatória}
+    \agradecimentos{Agradecimentos aqui!}
+    \sumario
+    \include{resumo}
+    \abstract{}{}
+    \listadetabelas
+    \listadefiguras
+
+    \corpodotextoemcapitulos
+
+    \include{cap1}
+
+    \end{document}
+\end{lstlisting}
+
+O comando \emph{include} chama o arquivo \emph{cap1.tex}, que deverá ter o seguinte formato para que todas as citações feitas com 
+os comandos \emph{\textbackslash cite} possam gerar a lista de referências da maneira correta.
+
+\begin{lstlisting}
+    \chapter{Considerações gerais}
+    \section{Introdução}
+
+    Texto texto texto texto.
+
+    \section{Revisão de Literatura}
+
+    Primeiro parágrado da seção Revisão de Literatura. Texto texto texto.
+
+    Segundo parágrafo.
+
+    \bibliography{meuarquivobibtex.bib}
+
+\end{lstlisting}
+
+% section exemplo_de_utliliza_o (end)
+
+
+\end{document}

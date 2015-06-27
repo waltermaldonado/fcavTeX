@@ -1,0 +1,66 @@
+                            fcavTeX  
+                  Normas FCAV/UNESP - Jaboticabal
+                      Teses e Dissertações
+             
+-----------------------------------------------------------------
+
+Este arquivo leia-me traz o histórico de modificações dos arquivos
+da classe fcavTeX, criada para formatação automática segundo as 
+normas da Faculdade de Ciências Agrárias e Veterinárias de Jaboticabal
+UNESP.
+
+Apesar da recomendação para que os arquivos da classe base abnTeX2 
+não fossem alterados, o  arquivo abntex2-alf.bst teve que ser 
+modificado para atender as exigências da Universidade.
+
+A versão mais recente do fcavTeX é v-1.0.
+
+Histórico de modificações
+-----------------------------------------------------------------      
+  27/06/2015 - v1.0 
+    . versão incial CTAN
+
+INSTALAÇÃO
+-----------------------------------------------------------------
+
+Instalação Manual
+------------------
+
+Você pode instalar a classe manualmente colocando os arquivos 
+abaixo em qualquer caminho que seus compiladores LaTeX possam
+encontrá-los. Normalmente isso é feito colocando-os na mesma
+pasta do seu arquivo .tex.
+
+  abntex2-alf.bst         Arquivo de manipulação das entradas
+                          bibliográficas e geração da lista
+                          de referências.
+  unespfcav.cls           Arquivo de classe configurado de
+                          acordo com as normas mais recentes 
+                          da universidade.
+  
+
+CÓPIA E MODIFICAÇÃO
+-----------------------------------------------------------------
+
+Copyright 2015 fcavTeX Walter Maldonado Junior
+
+Este pacote pode ser redistribuído e/ou modificado de acordo com
+os termos da 'LaTeX Project Public License' distribuída nos 
+arquivos CTAN no diretório macros/latex/base/lppl.txt; na versão 
+1.3 da licensa ou, (à sua escolha) qualquer versão mais recente.
+
+This package can be redistributed and/or modified under the terms
+of the LaTeX Project Public License distributed from CTAN
+archives in the directory macros/latex/base/lppl.txt; either
+version 1.3 of the license, or (at your option) any later version.
+
+AJUDA
+-----------------------------------------------------------------
+
+Maiores informações em:
+ 
+https://github.com/waltermaldonado/fcavTeX
+
+Precisamos de colaboradores, toda ajuda é bem vinda!
+
+Walter Maldonado Junior - walter@agroestat.com.br
