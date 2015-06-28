@@ -14,6 +14,10 @@ Você pode utilizar os arquivos deste repositório em um serviço online como o 
   * [TeX Live 2013/2014](http://www.tug.org/texlive/) para Windows e Linux;
   * [MacTeX 2013/2014](http://tug.org/mactex/) para Mac;
 
+*** Sugestões de cursos/tutoriais ***
+
+  * [Introdução ao LaTeX](http://www.lcmaquino.org/category/introducao-ao-latex/), de Luiz Cláudio Mesquita de Aquino
+
 ### shareLaTeX ###
 
 Há um exemplo em funcionamento no site do [shareLaTeX](https://pt.sharelatex.com/). O projeto não pode ser editado, mas você pode criar a sua conta e utilizá-lo como referência para o seu trabalho. Basta manter os arquivos *unespfcav.cls* e *unespfcav.bst* na mesma pasta dos seus arquivos .tex.
