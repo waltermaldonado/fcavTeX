@@ -803,8 +803,8 @@ FUNCTION {format.volume.no.bbl} %leaves formatted or empty volume on the stack
 
 FUNCTION {anais.check.url}
 { url empty$
-    {"Anais..." emphasize}
-    {"Anais eletrônicos..." emphasize}
+    {"Anais\ldots" emphasize}
+    {"Anais eletrônicos\ldots" emphasize}
   if$
 }
 
