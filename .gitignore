@@ -4,6 +4,8 @@
 /test/
 .texlipse
 .settings
+*.fdb*
+*.html
 *.aux
 *.log
 *.glo
