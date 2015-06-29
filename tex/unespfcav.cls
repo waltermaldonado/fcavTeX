@@ -37,6 +37,7 @@
 \RequirePackage[setpagesize=false]{hyperref}
 \RequirePackage[sectionbib]{chapterbib}
 \RequirePackage[alf]{abntex2cite}
+\RequirePackage[cm]{{sfmath}}
 
 % References
 \bibliographystyle{unespfcav}
@@ -57,7 +58,7 @@
 
 \makechapterstyle{chap1}{%
   \def\chapterheadstart{\justifying}
-  \def\afterchapternum{\space-\space}
+  \def\afterchapternum{\space\textendash\space}
   \renewcommand{\chapnamefont}{\fontsize{12}{12}\selectfont\sffamily\bfseries\MakeUppercase}
   \renewcommand{\chapnumfont}{\fontsize{12}{12}\selectfont\sffamily\bfseries}
   \renewcommand{\chaptitlefont}{\fontsize{12}{12}\selectfont\sffamily\bfseries}
@@ -341,7 +342,54 @@
 	\citeoption{abnt-etal-list=0}
 	\citeoption{abnt-thesis-year=both}
 	\citeoption{abnt-emphasize=bf}
+	\citeoption{abnt-url-package=url}
 	\bibliographystyle{unespfcav}
 	\renewcommand{\bibname}{Referências}
 }
 
+\def\bibliography#1{% ****
+  {
+	  \ifx \SingleSpacing\undefined
+	    \singlespacing
+	  \else
+	    \SingleSpacing   
+	  \fi  
+	  %
+	  \ifthenelse{\boolean{ABCIciteoptionwasused}
+	               \and\boolean{ABCIauto-abntoptions}}
+	   {
+	   % this system of checking is not good...
+	    \IfSubStringInString{abntex2-options}{#1}
+	      {\if\cb@roottest
+           \if@filesw\immediate\write\@auxout{\string\bibdata{#1}}\fi
+           \fi 
+           \begingroup % localize hooks into \@bibitem
+           \ifx\@CitationPrefix\@empty\else \ifx\the@ipfilectr\@empty\else
+             \@cb@insertprefix
+           \fi\fi
+           \cb@dobiblio{\@currentipfile.bbl}%
+           \endgroup}
+	      {\if\cb@roottest
+           \if@filesw\immediate\write\@auxout{\string\bibdata{abntex2-options,#1}}\fi
+           \fi 
+           \begingroup % localize hooks into \@bibitem
+           \ifx\@CitationPrefix\@empty\else \ifx\the@ipfilectr\@empty\else
+             \@cb@insertprefix
+           \fi\fi
+           \cb@dobiblio{\@currentipfile.bbl}%
+           \endgroup}
+	      }
+	   {
+	    \if\cb@roottest
+         \if@filesw\immediate\write\@auxout{\string\bibdata{#1}}\fi
+         \fi 
+         \begingroup % localize hooks into \@bibitem
+         \ifx\@CitationPrefix\@empty\else \ifx\the@ipfilectr\@empty\else
+           \@cb@insertprefix
+         \fi\fi
+         \cb@dobiblio{\@currentipfile.bbl}%
+         \endgroup
+	   }
+	 % \@input@{\jobname.bbl}
+  }
+ }
