@@ -35,10 +35,11 @@
 \RequirePackage{memhfixc}
 \RequirePackage{indentfirst}
 \RequirePackage[setpagesize=false]{hyperref}
-\RequirePackage[alf]{abntex2cite}
 \RequirePackage[sectionbib]{chapterbib}
+\RequirePackage[alf]{abntex2cite}
 
-%References
+% References
+\bibliographystyle{unespfcav}
 
 
 % Page Style
