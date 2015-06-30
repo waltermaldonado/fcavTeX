@@ -102,7 +102,6 @@ FUNCTION {init.state.consts}
   #3 'after.block :=
 }
 
-
 %output.nonnull decides what is written before the argument s, if a comma, period etc.
 FUNCTION {output.nonnull}
 { 's :=                                     %the argument is written into s
@@ -973,9 +972,6 @@ FUNCTION {filter.url.html}
  #1 'url.pos := "" 't :=
   {url.pos url.length <}
     {s url.pos #1 substring$
-    duplicate$ "%" = {pop$ "\%" } 'skip$ if$
-    duplicate$ "#" = {pop$ "\#" } 'skip$ if$
-    duplicate$ "_" = {pop$ "\_" } 'skip$ if$
     t swap$ * 't :=
     url.pos #1 + 'url.pos :=
     }

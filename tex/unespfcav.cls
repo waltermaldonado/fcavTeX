@@ -94,12 +94,26 @@
 \newcommand{\printqualificacaoautor}{\vqualificacaoautor}
 \newcommand{\ano}[1]{\def\vano{#1}}
 \newcommand{\printano}{\vano}
-\newcommand{\tipodoc}[1]{\def\vtipodoc{#1\space}}
+\newcommand{\tipodoc}[1]{\def\vtipodoc{#1}}
 \newcommand{\printtipodoc}{\vtipodoc}
 \newcommand{\titulopretendido}[1]{\def\vtitulopretendido{#1\space}}
 \newcommand{\printtitulopretendido}{\vtitulopretendido}
 \newcommand{\programa}[1]{\def\vprograma{#1}}
 \newcommand{\printprograma}{\vprograma}
+\newcommand{\email}[1]{\def\vemail{#1}}
+\newcommand{\printemail}{\vemail}
+\newcommand{\banca}[1]{\def\vbanca{#1}}
+\newcommand{\printbanca}{\vbanca}
+\newcommand{\palavraschave}[1]{\def\vpalavraschave{#1}}
+\newcommand{\printpalavraschave}{\vpalavraschave}
+\newcommand{\keywords}[1]{\def\vkeywords{#1}}
+\newcommand{\printkeywords}{\vkeywords}
+\newcommand{\nomefichacatalografica}[1]{\def\vnomefichacatalografica{#1}}
+\newcommand{\printnomefichacatalografica}{\vnomefichacatalografica}
+\newcommand{\cutter}[1]{\def\vcutter{#1}}
+\newcommand{\printcutter}{\vcutter}
+\newcommand{\cdu}[1]{\def\vcdu{#1}}
+\newcommand{\printcdu}{\vcdu}
 
 
 % Table of contents adjustments
@@ -218,7 +232,7 @@
 		\begin{textblock}{90}(100,165)
 		  \begin{sloppypar}
 		    \begin{Spacing}{1.2}
-		    \justify\fontsize{12}{12}\selectfont\sffamily{\printtipodoc  apresentada à Faculdade de Ciências Agrárias e Veterinárias - Unesp, Câmpus de Jaboticabal, como parte das exigências para a obtenção do título de \printtitulopretendido  em \printprograma}
+		    \justify\fontsize{12}{12}\selectfont\sffamily{\printtipodoc\ apresentada à Faculdade de Ciências Agrárias e Veterinárias - Unesp, Câmpus de Jaboticabal, como parte das exigências para a obtenção do título de \printtitulopretendido  em \printprograma}
 		    \end{Spacing}
 		  \end{sloppypar}
 		\end{textblock}
@@ -231,18 +245,91 @@
 	%\end{group}
 }
 
+\RequirePackage[pagecontinue=false]{pageslts}
+\RequirePackage{hyphenat}
+\pagenumbering{arabic}
+\RequirePackage{paralist}
+\RequirePackage{mfirstuc}
+\newcommand*{\splitPC}[1][]{%
+	\begin{inparaenum}[1.]
+		\@for\my@temp:=#1\do{%
+			\item{\ignorespaces\xmakefirstuc{\my@temp}.}
+		}
+	\end{inparaenum}
+}
+
 \newcommand{\fichacatalografica}{
 	%\begin{group}
 		\center
-		Ficha catalográfica
+		\null\vfill
+		\fbox{\rule{12cm}{0pt}\rule[0pt]{0pt}{9cm}}
+		\begin{textblock}{15}(40,113)
+			\fontsize{10}{10}\selectfont\sffamily\raggedright \printcutter
+		\end{textblock}
+		\begin{textblock}{103}(56,109)
+			\fontsize{10}{10}\selectfont\sffamily\raggedright \printnomefichacatalografica
+		\end{textblock}
+		\begin{textblock}{103}(56,113)
+			\OnehalfSpacing\justifying
+			\setlength{\parindent}{7mm}
+			\fontsize{10}{10}\selectfont\sffamily\printtitulo. / \printautor. --~-- Jaboticabal, \printano \par
+			\pageref{pagesLTS.roman}, \pageref{pagesLTS.arabic}\ p. ; 28cm
+		\end{textblock}
+
+		\begin{textblock}{103}(56,135)
+			\OnehalfSpacing\justifying
+			\fontsize{10}{10}\selectfont\sffamily
+			\begingroup
+				\hyphenpenalty 10000
+				\exhyphenpenalty 10000
+				\nohyphens{
+					\begin{sloppypar}
+						\ifthenelse{\equal{\vtipodoc}{Tese}}{
+							Tese (doutorado)\space\textendash\space
+						}{
+							\ifthenelse{\equal{\vtipodoc}{Dissertação}}{
+								Dissertação (mestrado)\space\textendash\space
+							}
+						}
+						\@ Universidade Estadual Paulista, Faculdade de Ciências Agrárias e Veterinárias, \printano
+						\par
+						Orientador(a): \printorientador
+						\par
+						Banca examinadora: \vbanca
+						\par
+						Bibliografia
+						\linebreak
+						\par
+						\splitPC[\vpalavraschave]
+						I.~Título. II.~Jaboticabal~\textendash\ Faculdade de Ciências Agrárias e Veterinárias.
+					\end{sloppypar}
+				}
+			\endgroup
+		\end{textblock}
+
+		\center\begin{textblock}{119}(40,187)
+			\ignorespaces\fontsize{10}{10}\selectfont\sffamily \printcdu
+		\end{textblock}
+
+		\justify\begin{textblock}{120}(40,196)
+		  \begin{sloppypar}
+		    \begin{Spacing}{1.2}
+			    \raggedright\fontsize{8}{8}\selectfont\sffamily{Ficha catalográfica elaborada pela Seção Técnica de Aquisição e Tratamento da Informação – Serviço Técnico de Biblioteca e Documentação - UNESP, Câmpus de Jaboticabal.
+			    \ifdefined\vemail\par E-mail: \printemail\fi
+			    }
+		    \end{Spacing}
+		  \end{sloppypar}
+		\end{textblock}
+		\vfill\null
 		\newpage
 	%\end{group}
 }
 
-\newcommand{\certificadodeaprovacao}{
+\usepackage{incgraph,tikz}
+\newcommand{\certificadodeaprovacao}[1]{
 	%\begin{group}
 		\center
-		Certificado de aprovação
+		\incgraph[documentpaper][width=\paperwidth,height=\paperheight]{#1}
 		\cleardoublepage{}
 	%\end{group}
 }
@@ -290,27 +377,27 @@
 	\cleardoublepage{}
 }
 
-\newcommand{\resumo}[2]{
+\newcommand{\resumo}[1]{
 	\center\fontsize{12}{12}\selectfont\sffamily\textbf{\MakeUppercase{\printtitulo}}
 	\par\addvspace{18pt}
 	\justifying
 	\setlength{\parindent}{0mm}
-	  \SingleSpacing\textbf{RESUMO} - #2
+	  \SingleSpacing\textbf{RESUMO\space\textendash}\space\ignorespaces#1
 	  \\
 	  \\
-	  \textbf{Palavras-chave: } #1 
+	  \textbf{Palavras-chave: }\printpalavraschave
 	\cleardoublepage{}
 }
 
-\renewcommand{\abstract}[2]{
+\renewcommand{\abstract}[1]{
 	\center\fontsize{12}{12}\selectfont\sffamily\textbf{\MakeUppercase{\printtituloingles}}
 	\par\addvspace{18pt}
 	\justifying
 	\setlength{\parindent}{0mm}
-	  \SingleSpacing\textbf{ABSTRACT} - #2
+	  \SingleSpacing\textbf{ABSTRACT\space\textendash}\space\ignorespaces#1
 	  \\
 	  \\
-	  \textbf{Keywords: } #1 
+	  \textbf{Keywords: }\printkeywords
 	\cleardoublepage{}
 }
 
