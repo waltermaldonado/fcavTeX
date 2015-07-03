@@ -28,4 +28,4 @@ Disponibilizei um modelo (template) pronto, basta trocar os campos com os dados 
 
 Há também um exemplo em funcionamento no site do [shareLaTeX](https://pt.sharelatex.com/). O projeto não pode ser editado, mas você pode criar a sua conta e utilizá-lo como referência para o seu trabalho. Basta manter os arquivos *unespfcav.cls* e *unespfcav.bst* na mesma pasta dos seus arquivos .tex.
 
-Projeto exemplo: https://pt.sharelatex.com/project/558eb0eed8509a876d9e2e51
+  * [Projeto exemplo](https://pt.sharelatex.com/project/558eb0eed8509a876d9e2e51)
