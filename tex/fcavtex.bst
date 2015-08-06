@@ -1,4 +1,4 @@
-%% unespfcav.bst, v<VERSION> waltermaldonado
+%% fcavtex.bst, v<VERSION> waltermaldonado
 %% Copyright 2015 by Walter Maldonado Jr 
 %%
 %% This work may be distributed and/or modified under the

@@ -33,14 +33,14 @@ function initialize(){
         rm -rf target
 
         # creating directories for CTAN zip
-        mkdir -p target/fcavtex/{src,doc}
+        mkdir -p target/fcavtex/
        
         # copying all abntex2source files
         mkdir -p target/fcavtexsource/
-        cp -rf doc tex README bibtex target/fcavtexsource/
+        cp -rf doc/manual doc/examples tex README target/fcavtexsource/
        
         # creating doc directory (only documentation, without examples)
-        mkdir -p target/doc/examples
+        # mkdir -p target/doc/examples
 }
 
 # generate LaTeXFiles
@@ -50,11 +50,11 @@ function buildPdf(){
 
     echo "copying fcavTeX files to doc files"
 
-        cp -rf target/fcavtexsource/tex/* target/fcavtexsource/doc/examples/
+        cp -rf target/fcavtexsource/tex/* target/fcavtexsource/examples/
 
     
     echo "Compiling manual"
-        cd target/fcavtexsource/doc/manual/
+        cd target/fcavtexsource/manual/
         compileLaTeX fcavtex
 
     echo "Compiling examples"   
@@ -62,14 +62,14 @@ function buildPdf(){
         cd ../examples/
         compileLaTeX basico-principal
     
-    echo "removing abnTeX2 files from doc files"
-        cd ../../../../
-        rm -rf target/fcavtexsource/doc/manual/*.cls
-        rm -rf target/fcavtexsource/doc/manual/*.sty
-        rm -rf target/fcavtexsource/doc/manual/*.bst
-        rm -rf target/fcavtexsource/doc/examples/*.cls
-        rm -rf target/fcavtexsource/doc/examples/*.sty
-        rm -rf target/fcavtexsource/doc/examples/*.bst
+    echo "removing fcavTeX files from doc files"
+        cd ../../../
+        rm -rf target/fcavtexsource/manual/*.cls
+        rm -rf target/fcavtexsource/manual/*.sty
+        rm -rf target/fcavtexsource/manual/*.bst
+        rm -rf target/fcavtexsource/examples/*.cls
+        rm -rf target/fcavtexsource/examples/*.sty
+        rm -rf target/fcavtexsource/examples/*.bst
 }
 
 # change permissions of folders and files
@@ -80,35 +80,16 @@ function changepermissions(){
 
 # generate compressed files
 function buildCompressed(){
-
-        echo "$ZIP_DOC (only doc files):"
-        cp target/fcavtexsource/doc/manual/* target/doc
-        cp target/fcavtexsource/doc/examples/* target/doc/examples
-        cd target/doc
-        zip -rj ../../$ZIP_DOC * -i *README \*.tex \*.pdf \*.bib
-        cd ../..
-       
-        echo "$ZIP_TDS (tds directory structure):"
-        cd target/fcavtexsource
-        zip -r ../../$ZIP_TDS bibtex doc tex README -i *README \*.tex \*.pdf \*.bib \*.bst \*.cls \*.sty \*.jpg
-        cd ../..
        
         echo "$ZIP_CTAN (tex and doc browsable content + abntex2-tds.zip + README):"
-        cp $ZIP_TDS target/fcavtex.tds.zip
-        cp -rf target/fcavtexsource/tex/* target/fcavtex/tex
-        cp -rf target/fcavtexsource/bibtex/bib/* target/fcavtex/tex
-        cp -rf target/fcavtexsource/bibtex/bst/* target/fcavtex/tex
-        cp -rf target/fcavtexsource/doc/* target/fcavtex/doc
-        mv target/fcavtex/doc/README target/fcavtex/README
+        cp -rf target/fcavtexsource/tex/* target/fcavtex
+        mv target/fcavtexsource/README target/fcavtex/README
+        mv target/fcavtexsource/manual target/fcavtex/manual
+        mv target/fcavtexsource/examples target/fcavtex/examples
         cd target
         zip -r ../$ZIP_CTAN fcavtex -i *README \*.tex \*.pdf \*.bib \*.bst \*.cls \*.sty \*.jpg
-        zip ../$ZIP_CTAN fcavtex.tds.zip
         cd ..
 
-        echo "$TAR_FILE (tds directory structure + MakeFile):"
-        cd target/fcavtexsource
-        find . -type f -name '*.tex' -o -name '*.pdf' -o -name '*.bib' -o -name '*.bst' -o -name '*.cls' -o -name '*.sty' -o -name '*.jpg' -o -name README -o -name Makefile | sed 's/^..//' | tar cfvz ../../$TAR_FILE --files-from -
-        cd ../..
 }
 
 # clean temp files
@@ -161,10 +142,7 @@ function printEndingInformation(){
         echo --------------------------------------------------
         echo Done! The following files were generated:
         echo
-        echo $ZIP_DOC
-        echo $ZIP_TDS
         echo $ZIP_CTAN
-        echo $TAR_FILE
         echo
         echo --------------------------------------------------
 }

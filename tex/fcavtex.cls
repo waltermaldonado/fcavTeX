@@ -1,4 +1,4 @@
-%% unespfcav.cls, v<VERSION> waltermaldonado
+%% fcavtex.cls, v<VERSION> waltermaldonado
 %% Copyright 2015 by Walter Maldonado Jr 
 %%
 %% This work may be distributed and/or modified under the
@@ -16,7 +16,7 @@
 %% Creator and original mantainer: Walter Maldonado Jr <walter@agroestat.com.br>
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{unespfcav}[2015/06/26 Thesis class for UNESP/FCAV - BRAZIL]
+\ProvidesClass{fcavtex}[2015/06/26 Thesis class for UNESP/FCAV - BRAZIL]
 
 \LoadClass[12pt,openright,twoside]{memoir}
 
@@ -40,8 +40,7 @@
 \RequirePackage[cm]{{sfmath}}
 
 % References
-\bibliographystyle{unespfcav}
-
+\bibliographystyle{fcavtex}
 
 % Page Style
 \makepagestyle{pstyle}
@@ -245,9 +244,7 @@
 	%\end{group}
 }
 
-\RequirePackage[pagecontinue=false]{pageslts}
 \RequirePackage{hyphenat}
-\pagenumbering{arabic}
 \RequirePackage{paralist}
 \RequirePackage{mfirstuc}
 \newcommand*{\splitPC}[1][]{%
@@ -430,7 +427,7 @@
 	\citeoption{abnt-thesis-year=both}
 	\citeoption{abnt-emphasize=bf}
 	\citeoption{abnt-url-package=url}
-	\bibliographystyle{unespfcav}
+	\bibliographystyle{fcavtex}
 	\renewcommand{\bibname}{Referências}
 }
 
@@ -480,3 +477,6 @@
 	 % \@input@{\jobname.bbl}
   }
  }
+
+\RequirePackage[pagecontinue=false]{pageslts}
+\pagenumbering{arabic}

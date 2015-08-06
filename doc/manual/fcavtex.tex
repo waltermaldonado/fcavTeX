@@ -1,4 +1,4 @@
-%% unespfcav.tex, v<VERSION> waltermaldonado
+%% fcavtex.tex, v<VERSION> waltermaldonado
 %% Copyright 2015 by Walter Maldonado Jr 
 %%
 %% This work may be distributed and/or modified under the
@@ -96,10 +96,10 @@ acadêmico é sempre uma tarefa árdua, mecânica e cansativa. Quando
 nos deparamos com um trabalho extenso e com diversas referências bibliográficas,
 semanas de trabalho se vão. A classe fcavTeX poupa o usuário de horas perdidas
 em frente a um editor de texto limitado que não irá garantir a padronização do 
-seu documento. Com um conhecimento básico de \LaTeX \ é possível escrever todo a
+seu documento. Com um conhecimento básico de \LaTeX \ é possível escrever toda a
 sua tese ou dissertação sem precisar se preocupar com tamanho de fonte, espaçamento, etc.
-Quantos espaços após o título eu devo dar? Será que esse título é em negrito? São perguntas
-que não merecem o tempo de um pesquisador.
+Quantos espaços após o título? Será que esse título é em negrito? São perguntas
+que não merecem desperdício de tempo excessivo de um pesquisador.
 \end{abstract}
 
 \tableofcontents
@@ -110,14 +110,14 @@ que não merecem o tempo de um pesquisador.
 \section{Introdução}
 % ------
 
-Eu adoro tecnologia. A cada dia que trabalho com ela fico mais fascinado com todas as possiblilidades
-e todos os recursos que ela nos oferece. Se compararmos algumas tarefas que executamos hoje com a maneira
-com que eram desenvolvidas dez anos atrás veremos que há um progresso imenso. Tomem como exemplo os \emph{smartphones} 
+O progresso da tecnologa é fascinante. A cada dia que passa aumentam as possiblilidades
+e os recursos que ela nos oferece. Se compararmos algumas tarefas que executamos hoje com a maneira
+com que eram desenvolvidas dez anos atrás veremos que há um progresso impressionante. Tomem como exemplo os \emph{smartphones} 
 e como ficou fácil gerenciar a nossa agenda de compromissos, que além de tudo nos alerta quando esquecemos de algo,
 ao nosso alcance 24h por dia.
 
-E nós ainda estamos escrevendo nossos trabalho acadêmicos como escrevíamos há 25 anos. Escrevemos um título, selecionamos
-e mudamos os atributos de fonte. Quando muito, temos estílos pré-definidos para essa tarefa, o que ajuda um pouco mas
+E nós ainda estamos escrevendo nossos trabalhos acadêmicos como escrevíamos há 25 anos. Escrevemos um título, selecionamos
+e mudamos os atributos de fonte. Quando muito, temos estilos pré-definidos para essa tarefa, o que ajuda um pouco, mas
 não é suficiente. Digo que não é suficiente pois, se estamos fazendo um trabalho acadêmico, com certeza estamos seguindo 
 diversas regras que nos são impostas. Regras essas que \emph{todos} os alunos deverão seguir.
 
@@ -138,7 +138,7 @@ incluído. Todos os recursos apresentados pela classe estão em conformidade com
 \href{http://www.fcav.unesp.br/Home/posgraduacao/normas_disss_tese.pdf}{aqui}. Segue o código do exemplo.
 
 \begin{lstlisting}
-    \documentclass{unespfcav}
+    \documentclass{fcavtex}
 
     \begin{document}
 
@@ -195,13 +195,13 @@ os comandos \emph{\textbackslash cite} possam gerar a lista de referências da m
 
 % section exemplo_de_utliliza_o (end)
 
-\section{shareLaTeX} % (fold)
+\section{Overlead e shareLaTeX} % (fold)
 \label{sec:sharelatex}
-O shareLaTeX é um serviço gratuito (apresenta versões aprimoradas pagas) que pode ser utilizado para gerar a sua dissertação ou tese. A principal vantagem desse serviço é que ele dispensa o download e instalação das pesadas distribuições LaTeX na sua máquina local. Sendo assim, basta você acessar o website \href{https://pt.sharelatex.com/}{https://pt.sharelatex.com/}, criar uma conta e gerar os seus documentos \LaTeX\ na hora!
+O Overlead e o shareLaTeX são serviços gratuitos (apresentando algumas versões aprimoradas pagas) que podem ser utilizados para gerar a sua dissertação ou tese. A principal vantagem desse serviço é que ele dispensa o download e instalação das pesadas distribuições LaTeX na sua máquina local. Sendo assim, basta você acessar o website \href{http://www.overleaf.com}{http://www.overleaf.com} ou \href{https://pt.sharelatex.com/}{https://pt.sharelatex.com/}, criar uma conta e gerar os seus documentos \LaTeX\ na hora!
 
-Foi disponibilizado um projeto modelo para que seja possível checar como ocorre o processo de edição e compilação dos arquivos. Ele pode ser acessado através do link \href{https://pt.sharelatex.com/project/558eb0eed8509a876d9e2e51}{https://pt.sharelatex.com/project/558eb0eed8509a876d9e2e51}, porém não pode ser editado. 
+Foram disponibilizados projetos modelo para que seja possível checar como ocorre o processo de edição e compilação dos arquivos nos dois serviços citados. Eles podem ser acessados através dos links \href{https://www.overleaf.com/latex/templates/univeresidade-estadual-paulista-unesp-thesis-template/tgggvvxccvqv}{Overleaf} e \href{https://pt.sharelatex.com/project/558eb0eed8509a876d9e2e51}{shareLaTeX}. 
 
-No momento da compilação, os utilitários do \LaTeX\ buscam pelos arquivos de classe e de estilos bibliográficos na mesma pasta do arquivo principal do seu projeto (\emph{.tex}). Portanto, basta adicionar os arquivos \emph{unespfcav.bst} e \emph{unespfcav.cls} na mesma pasta do seu projeto. Tal procedimento vale para uma pasta em seu computador local, caso tenha instalado uma distribuição \LaTeX\ ou para um novo projeto no shareLaTeX, onde os arquivos podem ser visualizados na lista à esquerda na tela. Tais arquivos podem ser obtidos no site de desenvolvimento da classe \href{https://github.com/waltermaldonado/fcavTeX}{https://github.com/waltermaldonado/fcavTeX} e submetidos ao seu projeto pela ferramenta apropriada.
+No momento da compilação, os utilitários do \LaTeX\ buscam pelos arquivos de classe e de estilos bibliográficos na mesma pasta do arquivo principal do seu projeto (\emph{.tex}). Portanto, basta adicionar os arquivos \emph{fcavtex.bst} e \emph{fcavtex.cls} na mesma pasta do seu projeto. Tal procedimento vale para uma pasta em seu computador local, caso tenha instalado uma distribuição \LaTeX\ ou para um novo projeto no shareLaTeX, onde os arquivos podem ser visualizados na lista à esquerda na tela. Tais arquivos podem ser obtidos no site de desenvolvimento da classe \href{https://github.com/waltermaldonado/fcavTeX}{https://github.com/waltermaldonado/fcavTeX} e submetidos ao seu projeto pela ferramenta apropriada.
 % section sharelatex (end)
 
 \section{A classe \emph{memoir}} % (fold)
@@ -223,7 +223,7 @@ Não foi possível utilizar a classe abnTeX2 em sua forma original para o cumpri
 
 \section{Colabore com o fcavTeX} % (fold)
 \label{sec:colabore_com_o_fcavtex}
-Você pode colaborar com o projeto através do site no GitHub. Há uma seção específica para o apontamento de bugs e sugestões (\emph{Issues}) e, se desejar, você pode clonar o nosso projeto em sua máquina, fazer as modificações que julgar necessárias e submete-las ao projeto. O git é um sistema de controle de versão, que permite a diversos colaboradores a modificação dos originais de um sistema e a incorporação dessas modificações mediante aprovação do responsável pelo projeto. Também é possível que um repositório git seja utilizado para criar um novo projeto.
+Você pode colaborar com o projeto através do site no GitHub. Há uma seção específica para o apontamento de bugs e sugestões (\emph{Issues}) e, se desejar, você pode clonar o nosso projeto em sua máquina, fazer as modificações que julgar necessárias e submete-las novamente. O git é um sistema de controle de versão, que permite a diversos colaboradores a modificação dos originais de um sistema e a incorporação dessas modificações mediante aprovação do responsável pelo projeto. Também é possível que um repositório git seja utilizado para criar um novo projeto.
 
 Na prática, o repositório git é uma pasta, na qual os arquivos do projeto residem. A cada vez que você modifica um arquivo nessa pasta, o git detecta essa ação e, quando você executa um \emph{commit}, essas alterações geram uma nova versão do sistema, passível de ser recuperada caso seja necessário após novos \emph{commits}. Essas alterações, por fim, são sincronizadas com um servidor (no caso o GitHub).
 
