@@ -1,5 +1,7 @@
 # fcavTeX
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1286606.svg)](https://doi.org/10.5281/zenodo.1286606)
+
 A **fcavTeX** é uma classe LaTeX criada para atender às [normas para elaboração de dissertações e teses](http://www.fcav.unesp.br/Home/posgraduacao/normas_disss_tese.pdf) da Faculdade de Ciências Agrárias e Veterinárias de Jaboticabal - UNESP. 
 
 É desenvolvida com base na tradicional classe [memoir](https://www.ctan.org/pkg/memoir) e em modificações da classe [abntex2](https://github.com/abntex/abntex2), de Lauro César Araujo. Contém uma classe para a formatação automática do documento, pacotes de citação e de formatação de estilos bibliográficos. Basta preparar um banco de dados com suas citações (BiBTeX) utilizando, por exemplo, o [Zotero](http://www.zotero.org/) e elaborar um arquivo .tex somente com o conteúdo de seu trabalho, sem precisar se preocupar com formatação alguma!

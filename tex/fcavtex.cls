@@ -35,9 +35,47 @@
 \RequirePackage{memhfixc}
 \RequirePackage{indentfirst}
 \RequirePackage[setpagesize=false]{hyperref}
-\RequirePackage[sectionbib]{chapterbib}
+\RequirePackage{chapterbib}
 \RequirePackage[alf]{abntex2cite}
-\RequirePackage[cm]{{sfmath}}
+%\RequirePackage[cm]{{sfmath}}
+\RequirePackage{amsmath}
+\RequirePackage{relsize}
+\RequirePackage{amssymb}
+\RequirePackage[textsize=tiny, textwidth=2.5cm, disable]{todonotes}
+\RequirePackage{flafter}
+\RequirePackage{graphicx}
+%\RequirePackage[section]{placeins}
+
+\setlength{\marginparwidth}{2.5cm}
+\reversemarginpar
+
+\renewcommand{\bibsection}{%
+    \chapter{\bibname}
+}
+
+% Appendix
+\renewcommand{\appendixpagename}{\fontsize{14}{14}\selectfont\sffamily\MakeUppercase{Apêndices}}
+\renewcommand{\appendixname}{APÊNDICE}
+\renewcommand{\appendixtocname}{APÊNDICE}
+\renewcommand*{\cftappendixname}{APÊNDICE\space}
+
+% Figure Numbering
+\makeatletter
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+\renewcommand\@memfront@floats{}
+\renewcommand\@memmain@floats{}
+%\renewcommand\@memback@floats{}
+\makeatletter
+
+% Captions
+\captionnamefont{\fontsize{12}{16}\selectfont\sffamily}
+\captiontitlefont{\fontsize{12}{16}\selectfont\sffamily}
+\captiondelim{. }
+\hangcaption
+
+% Sizes of equations
+\DeclareMathSizes{12}{14}{11}{9}
 
 % References
 \bibliographystyle{fcavtex}
@@ -65,6 +103,20 @@
   \setlength{\afterchapskip}{\onelineskip}
   \def\afterchaptertitle{\par\nobreak\vskip \afterchapskip}
 }
+
+\makechapterstyle{chap2}{%
+  \def\chapterheadstart{\justifying}
+  \def\afterchapternum{}
+  \renewcommand{\printchaptername}{}
+  \renewcommand{\chapnamefont}{\fontsize{12}{12}\selectfont\sffamily\bfseries\MakeUppercase}
+  \renewcommand{\chapnumfont}{\fontsize{12}{12}\selectfont\sffamily\bfseries}
+  \renewcommand{\chaptitlefont}{\fontsize{12}{12}\selectfont\sffamily\bfseries}
+  \renewcommand{\afterchaptertitle}{}
+  \renewcommand{\printchaptertitle}[1]{\space\space \chaptitlefont \MakeUppercase{##1}}
+  \setlength{\afterchapskip}{\onelineskip}
+  \def\afterchaptertitle{\par\nobreak\vskip \afterchapskip}
+}
+
 \renewcommand\memendofchapterhook{%
 	\preparebibliography
 	\setlength{\parindent}{12.5mm}
@@ -104,9 +156,9 @@
 \newcommand{\banca}[1]{\def\vbanca{#1}}
 \newcommand{\printbanca}{\vbanca}
 \newcommand{\palavraschave}[1]{\def\vpalavraschave{#1}}
-\newcommand{\printpalavraschave}{\vpalavraschave}
+\newcommand{\printpalavraschave}{\nohyphens{\vpalavraschave}}
 \newcommand{\keywords}[1]{\def\vkeywords{#1}}
-\newcommand{\printkeywords}{\vkeywords}
+\newcommand{\printkeywords}{\nohyphens{\vkeywords}}
 \newcommand{\nomefichacatalografica}[1]{\def\vnomefichacatalografica{#1}}
 \newcommand{\printnomefichacatalografica}{\vnomefichacatalografica}
 \newcommand{\cutter}[1]{\def\vcutter{#1}}
@@ -122,6 +174,10 @@
 \renewcommand{\aftertoctitle}{%
   \par\addtocontents{toc}{\protect\hfill\mbox{\fontsize{12}{12}\selectfont\sffamily{Página}}\protect\par}
 }
+
+
+\renewcommand*{\l@chapter}[2]{%
+  \l@chapapp{\uppercase{#1}}{#2}{\cftchaptername}}
 
 \renewcommand{\cftchapterfont}{\fontsize{12}{12}\selectfont\sffamily\bfseries}
 \renewcommand{\cftsectionfont}{\fontsize{12}{12}\selectfont\sffamily} 
@@ -168,6 +224,13 @@
 \renewcommand{\cftfigurepagefont}{\fontsize{12}{12}\selectfont\sffamily}
 \renewcommand{\cftfigureleader}{\cftdotfill{\cftsectiondotsep}}
 \renewcommand{\cftbeforefigureskip}{0pt}
+
+\renewcommand{\cftfigurefont}{\fontsize{12}{12}\selectfont\sffamily}
+\renewcommand{\cftfigurepagefont}{\fontsize{12}{12}\selectfont\sffamily}
+\renewcommand{\cftfigureleader}{\cftdotfill{\cftsectiondotsep}}
+\renewcommand{\cftbeforefigureskip}{0pt}
+
+
 
 % Default formatting
 
@@ -224,7 +287,7 @@
 		  \begin{FlushRight}
 		    \begin{Spacing}{1.5}
 		      \fontsize{14}{14}\selectfont\sffamily\textbf{\printautor}
-		      \par\fontsize{14}{14}\selectfont\sffamily\textbf{\printorientador}
+		      \par\fontsize{14}{14}\selectfont\sffamily\textbf{Orientador: \printorientador}
 		    \end{Spacing}
 		  \end{FlushRight}	
 		\end{textblock}
@@ -237,7 +300,7 @@
 		\end{textblock}
 		\center\begin{textblock}{160}(30,264)
 		  \begin{Spacing}{1.5}
-		    \fontsize{12}{18}\selectfont\sffamily\textbf{2015}
+		    \fontsize{12}{18}\selectfont\sffamily\textbf{\printano}
 		  \end{Spacing}
 		\end{textblock}
 		\null\newpage
@@ -269,8 +332,9 @@
 		\begin{textblock}{103}(56,113)
 			\OnehalfSpacing\justifying
 			\setlength{\parindent}{7mm}
-			\fontsize{10}{10}\selectfont\sffamily\printtitulo. / \printautor. --~-- Jaboticabal, \printano \par
-			\pageref{pagesLTS.roman}, \pageref{pagesLTS.arabic}\ p. ; 28cm
+			\fontsize{10}{10}\selectfont\sffamily\printtitulo \space / \printautor. --~-- Jaboticabal, \printano \par
+			% ATENÇÃO: COLOCAR A OPÇÃO VERDADEIRO/FALSO PARA ILUSTRAçÕES
+			\pageref{pagesLTS.roman}, \pageref{pagesLTS.arabic}\ p. : il. ; 28cm
 		\end{textblock}
 
 		\begin{textblock}{103}(56,135)
@@ -290,7 +354,7 @@
 						}
 						\@ Universidade Estadual Paulista, Faculdade de Ciências Agrárias e Veterinárias, \printano
 						\par
-						Orientador(a): \printorientador
+						Orientador: \printorientador
 						\par
 						Banca examinadora: \vbanca
 						\par
@@ -337,7 +401,7 @@
 	\par\addvspace{18pt}
 	\justifying
 	\setlength{\parindent}{12.5mm}
-	\OnehalfSpacing#1
+	\DoubleSpacing#1
 	\cleardoublepage{}
 	%\end{group}
 }
@@ -361,13 +425,13 @@
 	\par\addvspace{18pt}
 	\justifying
 	\setlength{\parindent}{12.5mm}
-	\OnehalfSpacing#1
+	\DoubleSpacing#1
 	\cleardoublepage{}
 }
 
 \newcommand{\sumario}{
 	\frontmatter
-	\pagestyle{cstyle}
+	\pagestyle{pstyle}
 	\center
 	\OnehalfSpacing
 	\tableofcontents*
@@ -379,7 +443,7 @@
 	\par\addvspace{18pt}
 	\justifying
 	\setlength{\parindent}{0mm}
-	  \SingleSpacing\textbf{RESUMO\space\textendash}\space\ignorespaces#1
+	  \OnehalfSpacing\textbf{RESUMO\space\textendash}\space\ignorespaces#1
 	  \\
 	  \\
 	  \textbf{Palavras-chave: }\printpalavraschave
@@ -391,7 +455,7 @@
 	\par\addvspace{18pt}
 	\justifying
 	\setlength{\parindent}{0mm}
-	  \SingleSpacing\textbf{ABSTRACT\space\textendash}\space\ignorespaces#1
+	  \OnehalfSpacing\textbf{ABSTRACT\space\textendash}\space\ignorespaces#1
 	  \\
 	  \\
 	  \textbf{Keywords: }\printkeywords
@@ -401,24 +465,39 @@
 \newcommand{\listadetabelas}{
 	\center
 	\OnehalfSpacing
-	\listoftables*
+	\listoftables
 	\cleardoublepage{}
 }
 
 \newcommand{\listadefiguras}{
 	\center
 	\OnehalfSpacing
-	\listoffigures*
+	\listoffigures
 	\cleardoublepage{}
 }
 
 \newcommand{\corpodotextoemcapitulos}{
 	\mainmatter
+	\newsubfloat{figure}
 	\pagestyle{pstyle}
 	\chapterstyle{chap1}
 	\setcounter{secnumdepth}{2}
 	\setcounter{secnumdepth}{3}	
-	\OnehalfSpacing
+	\DoubleSpacing
+}
+
+\newcommand{\corpodotextocorrido}{
+	\mainmatter
+	%\newsubfloat{figure}
+	%\subcaptionlabelfont{\fontsize{12}{12}\selectfont\sffamily} 
+	%\subcaptionfont{\fontsize{12}{12}\selectfont\sffamily}
+	%\hangsubcaption
+
+	\pagestyle{pstyle}
+	\chapterstyle{chap2}
+	\setcounter{secnumdepth}{1}
+	\setcounter{secnumdepth}{2}	
+	\DoubleSpacing
 }
 
 \newcommand{\preparebibliography}{
@@ -433,10 +512,10 @@
 
 \def\bibliography#1{% ****
   {
-	  \ifx \SingleSpacing\undefined
-	    \singlespacing
+	  \ifx \OnehalfSpacing\undefined
+	    \Onehalfspacing
 	  \else
-	    \SingleSpacing   
+	    \OnehalfSpacing   
 	  \fi  
 	  %
 	  \ifthenelse{\boolean{ABCIciteoptionwasused}
